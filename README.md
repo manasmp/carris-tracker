@@ -4,7 +4,7 @@ Carris Metropolitana public bus arrival tracker
 ## About This Project
 I took big inspiration from the [Transit Tracker Project](https://transit-tracker.eastsideurbanism.org/) but instead of using a LED Display, I'll be making a front-end to display on a normal screen like my CRT TV. 
 <p align="center">
-![Transit Tracker Website Print](https://i.imgur.com/4sxGyGB.png) 
+<img src="https://i.imgur.com/4sxGyGB.png">
 </p>
 #### Made with:
 
