@@ -6,6 +6,12 @@ import config
 def get_url_realtime(STOP_ID):   
     return config.BASE_URL+"/stops/"+STOP_ID+"/realtime"
 
+# Returns the api link for the specified line id
+
+def get_line_color(ROUTE_ID):
+    line = requests.get(config.BASE_URL+"/lines/"+ROUTE_ID).json()
+    return line.get("color")
+
 # Returns the present time in unix
 def get_now_unix():
     return int(time.time())  #current time in unixtime
@@ -59,7 +65,8 @@ def str_minutes_left(i):
 def get_next_buses(STOP_ID,n,t):
     
     """
-    Prints up to n upcoming buses for the given STOP_ID within t minutes.
+    Returns a tuple with the next n buses arriving at the specified STOP_ID within t minutes.
+    Tuple contains (mode, line number, destination, time left, line color).
     Args:
         STOP_ID (str): The stop identifier to query.
         n (int): Maximum number of buses to print.
@@ -68,7 +75,7 @@ def get_next_buses(STOP_ID,n,t):
     """
     data = requests.get(get_url_realtime(STOP_ID)).json()
     j = 0
-    
+    buses = []
     for i in data:
         if j == n:
             break
@@ -76,10 +83,8 @@ def get_next_buses(STOP_ID,n,t):
         if (get_now_unix() < get_scheduled_unix(i) and minutes_fromnow(t) > get_scheduled_unix(i)): #or get_now_unix() - get_scheduled_unix(i) < m_to_s(1)):
             est = get_estimated(i)
             if est is not None:
-                print("🚌 " + i["line_id"] + " " + i["headsign"] + " " + str_minutes_left(i))
+                buses.append(("estimated",i["line_id"], i["headsign"],str_minutes_left(i),get_line_color(i["line_id"])))
             else:
-                print("⏱️  " + i["line_id"] + " " + i["headsign"] + " " + str_minutes_left(i))
+                buses.append(("scheduled",i["line_id"], i["headsign"],str_minutes_left(i),get_line_color(i["line_id"])))
             j += 1
-    return
-
-get_next_buses(config.STOP_ID,3,15)
+    return buses
