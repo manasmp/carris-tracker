@@ -57,7 +57,7 @@ def minutes_until_bus(i):
 
 def str_minutes_left(i):
     minutes = minutes_until_bus(i)
-    if minutes == 0:
+    if minutes <= 1:
         return "A Chegar"
     else:
         return str(minutes) + " Min"
