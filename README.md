@@ -1,5 +1,7 @@
-
 # carris-tracker
+
+**Warning — very early in development. Expect bugs and breaking changes.**
+
 Carris Metropolitana public bus arrival tracker
 
 ## About This Project
@@ -20,6 +22,26 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 <p align="center">
 <img  src="https://i.imgur.com/BgBwLDj.png" height=200>
 </p>
+
+## How to use
+
+1. Open the project config file and set the stop ID:
+   - Edit `config.py` in the project root and set the STOP_ID value:
+     ```python
+     STOP_ID = "YOUR_STOP_ID"
+     ```
+   - The STOP_ID can be found on the Carris Metropolitana website — search for the stop and copy the ID from the stop's page URL or the realtime API URL (it appears as the segment after `/stops/`).
+
+2. Install dependencies (if present):
+   - If there's a `requirements.txt`: `pip install -r requirements.txt`
+   - Otherwise make sure `requests` and any other listed packages are installed.
+
+3. Run the app:
+   - From the project root: `python3 main.py`
+
+Notes:
+- The app fetches realtime data for the configured stop. If you change the STOP_ID, restart the app to load the new stop.
+- This project is experimental; behavior and ui will change.
 
 #### What I've learned with this:
  - Requesting from [API](https://github.com/carrismetropolitana/api)
