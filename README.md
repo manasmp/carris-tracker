@@ -20,3 +20,9 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 <p align="center">
 <img  src="https://i.imgur.com/BgBwLDj.png" height=200>
 </p>
+
+#### How it Looks
+<p align="center">
+Currently, main.py generates a screen like this: 
+<img src="https://i.imgur.com/a2ftMv5.png">
+</p>
