@@ -53,7 +53,7 @@ def render_buses():
         tk.Label(left, text=" " + destination, fg="white", bg="black", font=("Repetition Scrolling", font_size)).pack(side="left")
 
         # time stays at the far right of the row
-        tk.Label(row, text=" " + display_time, fg=time_color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="right")
+        tk.Label(row, text=" " + display_time, fg=time_color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="right",padx=25)
 
         # schedule next refresh in 30 seconds (30000 ms)
         root.after(30000, render_buses)

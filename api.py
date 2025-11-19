@@ -88,3 +88,4 @@ def get_next_buses(STOP_ID,n,t):
                 buses.append(("scheduled",i["line_id"], i["headsign"],str_minutes_left(i),get_line_color(i["line_id"])))
             j += 1
     return buses
+print(get_next_buses(config.STOP_ID,5,30))
