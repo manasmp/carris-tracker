@@ -17,14 +17,15 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 #### Why ? 
  - I wanted to learn how to interact with APIs, since I've never worked with it before
  - I've had a CRT in my room for years I haven't used in a while. This could also be later added (I hope) to the [Homepage](https://github.com/gethomepage/homepage) I'm selfhosting in my local network as a widget.
+<p align="center">
+<img  src="https://i.imgur.com/BgBwLDj.png" height=200>
+</p>
 
 #### What I've learned with this:
  - Requesting from API
  - Simple Multithreading
  - Basic TKinter UI notions
-<p align="center">
-<img  src="https://i.imgur.com/BgBwLDj.png" height=200>
-</p>
+
 
 #### How it Looks
 <p align="center">
