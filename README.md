@@ -24,5 +24,5 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 #### How it Looks
 <p align="center">
 Currently, main.py generates a screen like this: 
-<img src="https://i.imgur.com/a2ftMv5.png">
+<img src="https://i.imgur.com/AJx7oyM.png">
 </p>
