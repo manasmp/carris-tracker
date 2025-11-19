@@ -9,7 +9,7 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 </p>
 
 #### Made with: 
- - Python (Tkninter for graphics)
+ - Python (Tkinter for graphics)
  - [Carris Metropolitana
    API](https://github.com/carrismetropolitana/api)  for real time
    information about the buses.
