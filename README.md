@@ -11,3 +11,7 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
    API](https://github.com/carrismetropolitana/api)  for real time
    information about the buses.
 
+#### Why ? 
+ - I wanted to learn how to interact with APIs, since I've never worked with it before
+ - I've had a CRT in my room for years I haven't used in a while. This could also be later added (I hope) to the [Homepage](https://github.com/gethomepage/homepage) I'm selfhosting in my local network as a widget.
+<img  src="https://i.imgur.com/BgBwLDj.png" height=200>
