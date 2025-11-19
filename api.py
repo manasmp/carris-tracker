@@ -1,6 +1,7 @@
 import requests
 import time
 import config
+import re
 
 # Returns the api link for the specified stop
 def get_url_realtime(STOP_ID):   
@@ -61,6 +62,19 @@ def str_minutes_left(i):
         return "A Chegar"
     else:
         return str(minutes) + " Min"
+def sort_buses(buses):
+    # Sort by time left
+    # sort by numeric minutes in the display (treat "A Chegar" as 0)
+    return sorted(
+        buses,
+        key=lambda bus: 0 if bus[3] == "A Chegar" else int(re.search(r"(\d+)", bus[3]).group(1)) if re.search(r"(\d+)", bus[3]) else 9999,
+    )
+def get_stop_info(STOP_ID):
+    stopdata = requests.get(config.BASE_URL+"/stops/"+STOP_ID).json()
+    return stopdata
+def get_stop_name(STOP_ID):
+    stopdata = get_stop_info(STOP_ID)
+    return stopdata.get("name")
 
 def get_next_buses(STOP_ID,n,t):
     
@@ -82,10 +96,19 @@ def get_next_buses(STOP_ID,n,t):
         #if the bus is within 20 minutes from now
         if (get_now_unix() < get_scheduled_unix(i) and minutes_fromnow(t) > get_scheduled_unix(i)): #or get_now_unix() - get_scheduled_unix(i) < m_to_s(1)):
             est = get_estimated(i)
+
+            # clean headsign by removing any parenthesized text (e.g. "Centro (retorno)" -> "Centro")
+            raw_headsign = i.get("headsign", "")
+            # remove parentheses and their contents, then collapse whitespace
+            no_paren = re.sub(r"\s*\([^)]*\)\s*", " ", raw_headsign)
+            # collapse any consecutive whitespace and trim
+            headsign = " ".join(no_paren.split())
+            # i hate string manipulation so much
             if est is not None:
-                buses.append(("estimated",i["line_id"], i["headsign"],str_minutes_left(i),get_line_color(i["line_id"])))
+                buses.append(("estimated", i["line_id"], headsign, str_minutes_left(i), get_line_color(i["line_id"])))
             else:
-                buses.append(("scheduled",i["line_id"], i["headsign"],str_minutes_left(i),get_line_color(i["line_id"])))
+                buses.append(("scheduled", i["line_id"], headsign, str_minutes_left(i), get_line_color(i["line_id"])))
             j += 1
-    return buses
-print(get_next_buses(config.STOP_ID,5,30))
+    return sort_buses(buses)
+
+print("Next Buses: ", get_next_buses(config.STOP_ID,5,30))
