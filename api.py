@@ -3,6 +3,19 @@ import time
 import config
 import re
 
+def get_all_buses():
+    data = requests.get(config.BASE_URL+"/buses").json()
+    return data
+
+def get_stops():
+    data = requests.get(config.BASE_URL+"/stops").json()
+    return data
+def get_pattern_headsign(PATTERN_ID):
+    pattern = requests.get(config.BASE_URL+"/patterns/"+PATTERN_ID).json()
+    return pattern.get("headsign")
+def get_pattern_line_id(PATTERN_ID):
+    pattern = requests.get(config.BASE_URL+"/patterns/"+PATTERN_ID).json()
+    return pattern.get("line_id")
 # Returns the api link for the specified stop
 def get_url_realtime(STOP_ID):   
     return config.BASE_URL+"/stops/"+STOP_ID+"/realtime"
@@ -70,7 +83,7 @@ def sort_buses(buses):
         key=lambda bus: 0 if bus[3] == "A Chegar" else int(re.search(r"(\d+)", bus[3]).group(1)) if re.search(r"(\d+)", bus[3]) else 9999,
     )
 def get_stop_info(STOP_ID):
-    stopdata = requests.get(config.BASE_URL+"/stops/"+STOP_ID).json()
+    stopdata = requests.get(config.BASE_URL+"/stops/"+str(STOP_ID)).json()
     return stopdata
 def get_stop_name(STOP_ID):
     stopdata = get_stop_info(STOP_ID)
@@ -111,4 +124,4 @@ def get_next_buses(STOP_ID,n,t):
             j += 1
     return sort_buses(buses)
 
-print("Next Buses: ", get_next_buses(config.STOP_ID,5,30))
+print("Next Buses: ", get_next_buses(config.STOP_ID,10,120))

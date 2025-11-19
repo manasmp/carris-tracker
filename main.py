@@ -26,7 +26,7 @@ def render_buses():
     """Start a background thread to fetch buses, then update the UI on the main thread."""
     def worker():
         try:
-            buses = get_next_buses(config.STOP_ID, 5, 30)
+            buses = get_next_buses(config.STOP_ID, config.NBUSES, config.MINUTESAHEAD)
             stopname = get_stop_name(config.STOP_ID)
             now = get_now()
             # schedule the UI update on the main thread
@@ -70,6 +70,7 @@ def update_ui(buses, streetname, time_now):
     # schedule next refresh in 30 seconds (30000 ms)
     root.after(30000, render_buses)
 
+#idk why i bother! errors dont happen cuz im goated 
 def show_error(e):
     for w in frame.winfo_children():
         w.destroy()
