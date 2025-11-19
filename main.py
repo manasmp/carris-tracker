@@ -44,13 +44,19 @@ def render_buses():
         # make the row fill the available width so the right-packed time label sits at the edge
         row.pack(fill='x', padx=40, pady=10)
 
-        tk.Label(row, text=line, fg=color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="left")
-        # let destination expand to take the remaining space so time is pushed to the right
-        tk.Label(row, text=" " + destination, fg="white", bg="black", font=("Repetition Scrolling", font_size)).pack(side="left", fill='x', expand=True)
+        # left container holds number + destination together on the left
+        left = tk.Frame(row, bg="black")
+        left.pack(side="left", fill='x', expand=True)
+
+        tk.Label(left, text=line, fg=color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="left")
+        # destination immediately after the number, left-aligned
+        tk.Label(left, text=" " + destination, fg="white", bg="black", font=("Repetition Scrolling", font_size)).pack(side="left")
+
+        # time stays at the far right of the row
         tk.Label(row, text=" " + display_time, fg=time_color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="right")
 
-    # schedule next refresh in 30 seconds (30000 ms)
-    root.after(30000, render_buses)
+        # schedule next refresh in 30 seconds (30000 ms)
+        root.after(30000, render_buses)
 
 
 # initial population and start the periodic refresh
