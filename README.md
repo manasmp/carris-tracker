@@ -9,7 +9,7 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 </p>
 
 #### Made with: 
- - Python
+ - Python (Tkninter for graphics)
  - [Carris Metropolitana
    API](https://github.com/carrismetropolitana/api)  for real time
    information about the buses.
@@ -22,9 +22,9 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 </p>
 
 #### What I've learned with this:
- - Requesting from API
+ - Requesting from [API](https://github.com/carrismetropolitana/api)
  - Simple Multithreading
- - Basic TKinter UI notions
+ - Basic [TKinter](https://docs.python.org/3/library/tkinter.html) UI notions
 
 
 #### How it Looks
