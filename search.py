@@ -39,9 +39,11 @@ def show_search_results(name):
 
 def search():
     name = input("Enter stop name to search: ")
-    results = show_search_results(name)
+    busid = input("Enter bus number to search: ")
+    results = show_search_results(name)  ##OPTMIZE THIS LATER
     for res in results:
-        print(res)
-    chosen = int(input("Enter stop number to apply: "))
-    return results[chosen-1][1][0]
+        for bus in res[1][3:]:
+            if bus[0] == busid:
+                print("Found bus ", busid, " at stop ", res[1][1])
+                return res[1][0]
 print(search())
