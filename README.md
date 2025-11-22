@@ -53,5 +53,5 @@ Notes:
 <p align="center">
 Currently, main.py generates a screen like this: 
  
-<img src="https://i.imgur.com/AJx7oyM.png">
+<img src="https://i.imgur.com/ufqgLw0.jpeg">
 </p>
