@@ -4,10 +4,18 @@ import config
 import threading
 
 root = tk.Tk()
-# run windowed instead of fullscreen so the app is easier to debug locally
-root.title="Carris Tracker"
-root.geometry("1280x720")
-root.resizable(True, True)
+# Run fullscreen. Use the -fullscreen attribute which is cross-platform.
+# Keep an Escape binding to close the app during testing/when needed.
+root.title("Carris Tracker")
+try:
+    root.attributes('-fullscreen', True)
+except Exception:
+    # Fallback for platforms that don't support -fullscreen
+    try:
+        root.state('zoomed')
+    except Exception:
+        # Last resort: set a large geometry
+        root.geometry("1920x1080")
 root.configure(bg="black")
 
 # Frame to contain the lines (kept global so we can clear/repopulate it)
