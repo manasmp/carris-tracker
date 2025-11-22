@@ -28,7 +28,8 @@ bottom_bar.pack(side="bottom", fill='x')
 street_lbl = tk.Label(bottom_bar, text="", fg="white", bg="black", font=("Repetition Scrolling", 20))
 street_lbl.pack(side="left", padx=(0, 40), pady=10)
 time_lbl = tk.Label(bottom_bar, text="", fg="white", bg="black", font=("Repetition Scrolling", 20))
-time_lbl.pack(side="right", padx=25, pady=10)
+# remove extra right padding so the time is flush with the window edge
+time_lbl.pack(side="right", padx=0, pady=10)
 
 def render_buses():
     """Start a background thread to fetch buses, then update the UI on the main thread."""
@@ -65,7 +66,8 @@ def update_ui(buses, streetname, time_now):
         display_time = " ⌯⌲ " + time_string if mode == "estimated" else time_string
 
         row = tk.Frame(frame, bg="black")
-        row.pack(fill='x', padx=(0, 40), pady=10)
+        # remove right-side padding so the right-aligned time can reach the edge
+        row.pack(fill='x', padx=(0, 0), pady=10)
 
         left = tk.Frame(row, bg="black")
         left.pack(side="left", fill='x', expand=True)
@@ -73,7 +75,7 @@ def update_ui(buses, streetname, time_now):
         tk.Label(left, text=line, fg=color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="left")
         tk.Label(left, text=" " + destination, fg="white", bg="black", font=("Repetition Scrolling", font_size)).pack(side="left")
 
-        tk.Label(row, text=" " + display_time, fg=time_color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="right", padx=25)
+        tk.Label(row, text=" " + display_time, fg=time_color, bg="black", font=("Repetition Scrolling", font_size)).pack(side="right", padx=0)
 
     # schedule next refresh in 30 seconds (30000 ms)
     root.after(30000, render_buses)
