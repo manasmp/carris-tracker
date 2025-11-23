@@ -30,6 +30,8 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
      sudo apt install python3 python3-tk 
      ```
      if it asks for anything else like time, re or requests when you run it, just install it.
+   - Install the [Repetition Scrolling](https://www.1001fonts.com/repetition-scrolling-font.html) font:
+     <p> (In linux, usually done by moving repet___.ttf to ~/.fonts) </p>
 
 2. Search for your stop ID:
    - Find your stop ID [here](https://carrismetropolitana.pt/stops) or use search.py (very unoptimized and likely to fail)
