@@ -25,20 +25,22 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
 
 ## How to use
 
-1. Open the project config file and set the stop ID:
+1. Install dependencies:
+   - ```bash
+     sudo apt install python3 python3-tk 
+     ```
+     if it asks for anything else like time, re or requests when you run it, just install it.
+
+2. Search for your stop ID:
+   - Find your stop ID [here](https://carrismetropolitana.pt/stops) or use search.py (very unoptimized and likely to fail)
+     <p><img src="https://i.imgur.com/VN6uGks.png" height=300></p>
+     
+3. Open the project config file and set the stop ID:
    - Edit `config.py` in the project root and set the STOP_ID value:
      ```python
      STOP_ID = "YOUR_STOP_ID"
      ```
-   - The STOP_ID can be found on the Carris Metropolitana website — search for the stop and copy the ID from the stop's page URL or the realtime API URL (it appears as the segment after `/stops/`).
-
-2. Install dependencies:
-   - ```bash
-     sudo apt install python3 python3-tk 
-     ```
-     if it asks for anything else like time, re or requests, just install it.
-
-3. Run the app:
+4. Run the app:
    - From the project root: `python3 main.py`
 
 Notes:
@@ -49,7 +51,6 @@ Notes:
  - Requesting from [API](https://github.com/carrismetropolitana/api)
  - Simple Multithreading
  - Basic [TKinter](https://docs.python.org/3/library/tkinter.html) UI notions
-
 
 #### How it Looks
 <p align="center">
