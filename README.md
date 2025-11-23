@@ -32,9 +32,11 @@ I took big inspiration from the [Transit Tracker Project](https://transit-tracke
      ```
    - The STOP_ID can be found on the Carris Metropolitana website — search for the stop and copy the ID from the stop's page URL or the realtime API URL (it appears as the segment after `/stops/`).
 
-2. Install dependencies (if present):
-   - If there's a `requirements.txt`: `pip install -r requirements.txt`
-   - Otherwise make sure `requests` and any other listed packages are installed.
+2. Install dependencies:
+   - ```bash
+     sudo apt install python3 python3-tk 
+     ```
+     if it asks for anything else like time, re or requests, just install it.
 
 3. Run the app:
    - From the project root: `python3 main.py`
